@@ -9,7 +9,12 @@ import random
 import curses
 import time 
 curses.initscr()
-scr=curses.newwin(20,20,0,0)
+scr=curses.newwin(50,50,0,0)
+for i in range(49):
+    scr.addstr(0,i,"#")
+    scr.addstr(49,i,"#")
+    scr.addstr(i,0,"#")
+    scr.addstr(i,49,"#")
 curses.noecho()
 x=3
 y=1
@@ -101,7 +106,7 @@ def food_check():
     else:
         return 1
     
-while y!= 0 and y!= 19 and x!= 0 and x!= 19:
+while y!= 0 and y!= 49 and x!= 0 and x!= 49:
    
     key = scr.getch()
  #   key = key if Nkey==-1 else Nkey
