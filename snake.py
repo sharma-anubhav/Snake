@@ -94,6 +94,8 @@ def food():
 food()
 
 def food_check():
+    global food_x
+    global food_y
     if y == food_y and x == food_x:
         return 0
     else:
@@ -108,7 +110,12 @@ while y!= 0 and y!= 19 and x!= 0 and x!= 19:
         y+=1
         snake.append(y,x)
         if food_check():
+           # scr.addstr(0,0,(food_check())
             snake.delete()
+        else:
+            food_x = None
+            food_y = None
+            food()
         snake.printl()
         scr.refresh()
     elif key == curses.KEY_UP:
@@ -116,13 +123,21 @@ while y!= 0 and y!= 19 and x!= 0 and x!= 19:
         snake.append(y,x)  
         if food_check():
             snake.delete()
+        else:
+            food_x = None
+            food_y = None
+            food()
         snake.printl()
         scr.refresh()
     elif key == curses.KEY_RIGHT:
         x+=1
         snake.append(y,x)
         if food_check():
-            snake.delete()  
+            snake.delete()
+        else:
+            food_x = None
+            food_y = None
+            food()
         snake.printl()
         scr.refresh()
     elif key == curses.KEY_LEFT:
@@ -130,6 +145,10 @@ while y!= 0 and y!= 19 and x!= 0 and x!= 19:
         snake.append(y,x)
         if food_check():
             snake.delete()
+        else:
+            food_x = None
+            food_y = None
+            food()
         snake.printl()
         scr.refresh()
 
