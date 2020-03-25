@@ -22,7 +22,8 @@ scr.addstr(y,x,"*")
 scr.timeout(100)
 scr.keypad(1)
 #key = curses.KEY_RIGHT
-
+food_y = None
+food_x = None
 
 class node:
     def __init__(self,y,x):
@@ -76,10 +77,6 @@ snake.append(1,3)
 snake.printl()
 scr.refresh()
 
-
-food_y = None
-food_x = None
-
 def food():
     global food_x
     global food_y
@@ -115,13 +112,13 @@ while y!= 0 and y!= 49 and x!= 0 and x!= 49:
         y+=1
         snake.append(y,x)
         if food_check():
-           # scr.addstr(0,0,(food_check())
             snake.delete()
         else:
             food_x = None
             food_y = None
             food()
         snake.printl()
+        scr.addstr(food_y,food_x,"O")
         scr.refresh()
     elif key == curses.KEY_UP:
         y-=1
@@ -133,6 +130,7 @@ while y!= 0 and y!= 49 and x!= 0 and x!= 49:
             food_y = None
             food()
         snake.printl()
+        scr.addstr(food_y,food_x,"O")
         scr.refresh()
     elif key == curses.KEY_RIGHT:
         x+=1
@@ -144,6 +142,7 @@ while y!= 0 and y!= 49 and x!= 0 and x!= 49:
             food_y = None
             food()
         snake.printl()
+        scr.addstr(food_y,food_x,"O")
         scr.refresh()
     elif key == curses.KEY_LEFT:
         x-=1
@@ -155,6 +154,7 @@ while y!= 0 and y!= 49 and x!= 0 and x!= 49:
             food_y = None
             food()
         snake.printl()
+        scr.addstr(food_y,food_x,"O")
         scr.refresh()
 
     
